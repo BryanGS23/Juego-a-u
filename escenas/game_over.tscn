@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dd4x37j51q42"]
+
+[ext_resource type="Script" uid="uid://c2g8fphek4up1" path="res://escenas/game_over.gd" id="1_8d5yl"]
+[ext_resource type="Texture2D" uid="uid://b5vacw3frc15w" path="res://assets/Captura de pantalla 2026-10-23 103943.png" id="2_8d5yl"]
+
+[node name="GameOver" type="Control" unique_id=710787221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8d5yl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=526582924]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 651.0
+texture = ExtResource("2_8d5yl")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=333293793]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 650.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=14840183]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=749785513]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "NO TE TOCABA CARNAL"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=66062733]
+layout_mode = 2
+text = "reintentar"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=577367277]
+layout_mode = 2
+text = "ir al menu"

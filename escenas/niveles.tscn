@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c1g6sxr7xlgyy"]
+
+[ext_resource type="Script" uid="uid://djdw5lqpjtpda" path="res://niveles.gd" id="1_g6lji"]
+[ext_resource type="Texture2D" uid="uid://djtoh5hsigptx" path="res://assets/Captura de pantalla 2026-10-21 163009.png" id="2_wyxks"]
+
+[node name="Niveles" type="Control" unique_id=2000655157]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_g6lji")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=590604794]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 648.0
+texture = ExtResource("2_wyxks")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1506263135]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 1203.0
+offset_bottom = 718.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=566496949]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=546774362]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Seleciona nivel"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1948702735]
+layout_mode = 2
+text = "Pueblo"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1420460787]
+layout_mode = 2
+text = "cascadas"
