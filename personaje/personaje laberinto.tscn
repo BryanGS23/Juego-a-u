@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dh2m7g7jickq5"]
 
+[ext_resource type="Script" uid="uid://be652qjc77s1k" path="res://personaje/personaje_laberinto.gd" id="1_i4n4i"]
 [ext_resource type="Texture2D" uid="uid://c3qw7xxqw7d8c" path="res://assets/personaje2/Seeker_Void_Idle_30x30_24f.png" id="1_y4kyh"]
+[ext_resource type="Texture2D" uid="uid://bwlpwpeyliqb" path="res://assets/personaje2/Seeker_Void_Run_30x30_10f.png" id="2_kmhwc"]
+[ext_resource type="Texture2D" uid="uid://jcowl25nftv2" path="res://assets/personaje2/Guía de iluminación para laberinto oscuro.png" id="4_f8pgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35bam"]
 size = Vector2(11, 22)
 
 [sub_resource type="Animation" id="Animation_kmhwc"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,31 +81,103 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.7666667),
+"times": PackedFloat32Array(0, 0.06666666, 0.13333333, 0.19999999, 0.26666668, 0.33333337, 0.39999998, 0.4666667, 0.53333336, 0.6, 0.6666667, 0.73333335, 0.8, 0.8666667, 1.7, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 }
 
+[sub_resource type="Animation" id="Animation_f8pgv"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kmhwc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.3, 0.33333334, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8pgv"]
 _data = {
 &"RESET": SubResource("Animation_kmhwc"),
-&"idle": SubResource("Animation_i4n4i")
+&"idle": SubResource("Animation_i4n4i"),
+&"run": SubResource("Animation_f8pgv")
 }
 
-[node name="PersonajeLaberinto" type="Node2D" unique_id=1600649037]
+[node name="JugadorLaberinto" type="CharacterBody2D" unique_id=494015642]
+script = ExtResource("1_i4n4i")
 
-[node name="JugadorLaberinto" type="CharacterBody2D" parent="." unique_id=494015642]
-
-[node name="Sprite2D" type="Sprite2D" parent="JugadorLaberinto" unique_id=1989972516]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989972516]
+scale = Vector2(3, 3)
 texture = ExtResource("1_y4kyh")
 hframes = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JugadorLaberinto" unique_id=360757540]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=360757540]
 position = Vector2(-0.5, 2)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_35bam")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="JugadorLaberinto" unique_id=2080709152]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2080709152]
 libraries/ = SubResource("AnimationLibrary_f8pgv")
 
-[node name="Camera2D" type="Camera2D" parent="JugadorLaberinto" unique_id=1140797961]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1140797961]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1425142512]
+texture = ExtResource("4_f8pgv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1057360113]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1449621343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=1064292533]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 65.0
+grow_horizontal = 0
+text = "salir"
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
